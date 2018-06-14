@@ -74,4 +74,24 @@
         certificateView.setWaterRatio( 8 );
 	
 	
+事物处理：
+在Activity中添加：
+ 		
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if(requestCode == certificateView.getCAMERAMedia()){
+                //保存展示图片
+                certificateView.setReturnImage();
+                String front = certificateView.getImage_front_name();
+                String back = certificateView.getImage_back_name();
+                Uri frontUri = CertificateView.getImageContentUri( MainActivity.this,front );
+            }
+        }
+    }
 	
+	
+	
+	
+效果：![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/1.gif)
