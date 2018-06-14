@@ -28,6 +28,9 @@
     	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   
   	
+	
+	在demo实例中包含一个权限控制类PermissionsControl 添加权限：
+	
   	 protected String[] needPermissions = {
             //文件读写
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
