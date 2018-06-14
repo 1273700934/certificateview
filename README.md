@@ -25,6 +25,9 @@
         app:media_type = "1">
     </com.ding.voicecyber.certificateview.CertificateView>
     
+	在xml页面根节点加上
+	 xmlns:app="http://schemas.android.com/apk/res-auto"
+	
     后台：
      CertificateView certificateView;
         certificateView = findViewById( R.id.con_id );
