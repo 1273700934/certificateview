@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#b7748b</color>
+    <color name="colorGreen">#06ed5b</color>
+    <color name="black_semi_transparent">#B2000000</color>
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#643636</color>
+    <color name="white">#fafafa</color>
+    <color name="white_pressed">#00e7ef</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_semi_transparent_pressed">#36868786</color>
+    <color name="black">#120707</color>
+    <color name="remark">#decaca</color>
+    <color name="gary">#e6d3d3</color>
+    <color name="login">#0ab6a7</color>
+    <color name="count">#0380d9</color>
+    <color name="count_value">#56ce07</color>
+    <color name="ywh">#aacc0c29</color>
+    <color name="hui">#8b8a8a</color>
+    <color name="red">#ff0206</color>
+    <color name="translucent">#00000000</color>
+    <!-- QRCode scanner color begin -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="laser_color">#0F0</color>
+    <color name="corner_color">#00FF00</color>
+    <color name="colorTheme">#eb6100</color>
+    <color name="colorThemeDark">#ab4803</color>
+    <color name="colorColor1">#00dad7</color>
+    <color name="colorColor11">#1a9f9e</color>
+    <color name="colorColor2">#04b8f4</color>
+    <color name="colorColor22">#0686a1</color>
+    <color name="colorColor3">#8802f5</color>
+    <color name="colorColor33">#500a9f</color>
+    <color name="colorColor4">#0048f1</color>
+    <color name="colorColor44">#0511b3</color>
+    <color name="colorColor5">#04f43c</color>
+    <color name="colorColor55">#058022</color>
+    <color name="colorColor6">#8404f4</color>
+    <color name="colorColor66">#550699</color>
+    <color name="colorColor7">#ff2870</color>
+    <color name="colorColor77">#af1649</color>
+    <color name="colorColor8">#f404e0</color>
+    <color name="colorColor88">#96078a</color>
+    <color name="colorColor9">#3001ff</color>
+    <color name="colorColor99">#2104a6</color>
+    <color name="colorColor12">#0298f5</color>
+    <color name="colorColor122">#014066</color>
+    <color name="colorColor13">#bc80ce</color>
+    <color name="colorColor133">#4f3a64</color>
+    <color name="colorColor14">#d0e47a</color>
+    <color name="colorColor144">#596b3d</color>
+    <color name="colorColor10">#000000</color>
+    <color name="colorColor100">#ffffff</color>
+    <color name="appBack">#26b3da</color>
+    <string-array name="color_choices">
+        <item>#f44336</item>
+        <item>#e91e63</item>
+        <item>#9c27b0</item>
+        <item>#673ab7</item>
+        <item>#3f51b5</item>
+        <item>#2196f3</item>
+        <item>#03a9f4</item>
+        <item>#00bcd4</item>
+        <item>#009688</item>
+        <item>#4caf50</item>
+        <item>#8bc34a</item>
+        <item>#cddc39</item>
+        <item>#ffeb3b</item>
+        <item>#ffc107</item>
+        <item>#ff9800</item>
+        <item>#ff5722</item>
+        <item>#795548</item>
+        <item>#9e9e9e</item>
+        <item>#607d8b</item>
+        <item>#0b0b0b</item>
+    </string-array>
+    <string-array name="color_choices_700">
+        <item>#d32f2f</item>
+        <item>#c2185b</item>
+        <item>#7b1fa2</item>
+        <item>#512da8</item>
+        <item>#303f9f</item>
+        <item>#1976d2</item>
+        <item>#0288d1</item>
+        <item>#0097a7</item>
+        <item>#00796b</item>
+        <item>#388e3c</item>
+        <item>#689f38</item>
+        <item>#afb42b</item>
+        <item>#fbc02d</item>
+        <item>#ffa000</item>
+        <item>#f57c00</item>
+        <item>#e64a19</item>
+        <item>#5d4037</item>
+        <item>#616161</item>
+        <item>#455a64</item>
+    </string-array>
+</resources>
