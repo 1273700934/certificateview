@@ -65,7 +65,8 @@ public class CertificateView extends LinearLayout {
     private String image_front_name_tmp;
     private String image_back_name_tmp;
     private int Media = 0 ;
-    private static  String RootPath = Environment.getExternalStorageDirectory().getAbsolutePath()+ "/audiorecord/wav/";
+    private final static String RootDir = Environment.getExternalStorageDirectory().getAbsolutePath()+"/";
+    private static String RootPath = RootDir+ "audiorecord/wav/";
     private String WaterText = "水印";
     private int WaterSize = 600;
     private int WaterColor = Color.GREEN;
@@ -104,6 +105,14 @@ public class CertificateView extends LinearLayout {
     }
     public void setWaterRatio(int waterRatio){
         WaterRatio = waterRatio;
+    }
+    public void setRootPath(String rootPath){
+        RootPath = RootDir + rootPath+"/";
+        File file = new File( RootPath );
+        if(!file.exists()){
+            file.mkdirs();
+        }
+
     }
     public int getCAMERAMedia(){
         return REQUEST_CAMERA+Media;
@@ -197,16 +206,18 @@ public class CertificateView extends LinearLayout {
     }
 
     private void blowImage(String imageName, View view){
-//        Intent intent = new Intent(mContext, DragPhotoActivity.class);
-//        int location[] = new int[2];
-//        view.getLocationOnScreen(location);
-//        intent.putExtra("left", location[0]);
-//        intent.putExtra("top", location[1]);
-//        intent.putExtra("height", view.getHeight());
-//        intent.putExtra("width", view.getWidth());
-//        intent.putExtra( "image",imageName);
-//        mContext.startActivity(intent);
-//        mContext.overridePendingTransition(0,0);
+        //Intent intent = new Intent(mContext, DragPhotoActivity.class);
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.patientIf");
+        int location[] = new int[2];
+        view.getLocationOnScreen(location);
+        intent.putExtra("left", location[0]);
+        intent.putExtra("top", location[1]);
+        intent.putExtra("height", view.getHeight());
+        intent.putExtra("width", view.getWidth());
+        intent.putExtra( "image",imageName);
+        mContext.startActivity(intent);
+        mContext.overridePendingTransition(0,0);
     }
     /** 拍照
      * @param context

@@ -18,9 +18,7 @@ import com.ding.voicecyber.certificateview.CertificateView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int PERMISSON_REQUESTCODE = 0;
     CertificateView certificateView;
-    private boolean isNeedCheck = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -29,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         permissionsControl.startWork();
         certificateView = findViewById( R.id.con_id );
         certificateView.setActivity( MainActivity.this );
+        //设置保存目录 根目录下建文件夹
+        certificateView.setRootPath( "sample" );
         //设置照片文件名
         certificateView.setMediaName( "6663" );
         //水印

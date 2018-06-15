@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.voicecyber.smoothapp.ControlView.DragPhotoView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ding.voicecyber.certificateview.PhotoView.DragPhotoView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-</com.example.voicecyber.smoothapp.ControlView.DragPhotoView>
+</com.ding.voicecyber.certificateview.PhotoView.DragPhotoView>
