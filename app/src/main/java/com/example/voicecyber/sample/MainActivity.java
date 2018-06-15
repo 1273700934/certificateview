@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.ding.voicecyber.certificateview.CertificateView;
 import com.ding.voicecyber.certificateview.ImageCommon;
+import com.ding.voicecyber.certificateview.WaterText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         //照片压缩
         certificateView.setWaterRatio( 8 );
 
+        WaterText waterText = new WaterText();
+        waterText.context = MainActivity.this;
+        waterText.RootPath =  "sample";
+        waterText.WaterTextValue = "天天向上，好好学习";
+        waterText.WaterSize = 600;
+        waterText.WaterColor = Color.GREEN;
+        waterText.WaterRatio = 8;
+        waterText.MediaName = "6666";
+        certificateView.setWatermarkInfo( waterText );
     }
 
 

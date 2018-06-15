@@ -63,7 +63,7 @@
      	CertificateView certificateView;
         certificateView = findViewById( R.id.con_id );
         certificateView.setActivity( MainActivity.this );
-		//设置保存目录 根目录下自动建文件夹
+		//设置保存目录 根目录下自动建文件夹 /storage/emulated/0/sample
         certificateView.setRootPath( "sample" );
         //设置照片文件名
         certificateView.setMediaName( "6666" );
@@ -75,6 +75,18 @@
         certificateView.setWaterColor( Color.GREEN );
         //照片压缩
         certificateView.setWaterRatio( 8 );
+		
+		or
+		
+		WaterText waterText = new WaterText();
+        waterText.context = MainActivity.this;
+        waterText.RootPath =  "sample";
+        waterText.WaterTextValue = "天天向上，好好学习";
+        waterText.WaterSize = 600;
+        waterText.WaterColor = Color.GREEN;
+        waterText.WaterRatio = 8;
+        waterText.MediaName = "6666";
+        certificateView.setWatermarkInfo( waterText );
 	
 	
 # 事物处理：

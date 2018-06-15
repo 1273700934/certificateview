@@ -58,7 +58,7 @@ public class CertificateView extends LinearLayout {
     private String image_back_name_tmp;
     private int Media = 0 ;
     private final static String RootDir = Environment.getExternalStorageDirectory().getAbsolutePath()+"/";
-    private static String RootPath = RootDir+ "audiorecord/wav/";
+    private static String RootPath = RootDir+ "sample";
     private String WaterText = "水印";
     private int WaterSize = 600;
     private int WaterColor = Color.GREEN;
@@ -73,6 +73,15 @@ public class CertificateView extends LinearLayout {
         Media = attributes.getInteger(R.styleable.CertificateView_media_type,1);
         certificate_name.setText( certificate_name_val );
         buttonClick();
+    }
+    public void setWatermarkInfo(WaterText watermarkInfo){
+        setActivity( watermarkInfo.context );
+        setRootPath( watermarkInfo.RootPath );
+        setWaterText( watermarkInfo.WaterTextValue );
+        setWaterSize( watermarkInfo.WaterSize );
+        setWaterColor( watermarkInfo.WaterColor );
+        setWaterRatio( watermarkInfo.WaterRatio );
+        setMediaName(watermarkInfo.MediaName);
     }
     public void setActivity(Activity activity){
         mContext = activity;
