@@ -107,7 +107,12 @@
 	
 	
 	
-# 效果：![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/1.gif)
+# 效果：
+
+   ##[下载apk体验](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/sample.apk)
+
+
+![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/1.gif)
 
 
 ![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/2.gif)
