@@ -63,8 +63,10 @@
      	CertificateView certificateView;
         certificateView = findViewById( R.id.con_id );
         certificateView.setActivity( MainActivity.this );
+		//设置保存目录 根目录下自动建文件夹
+        certificateView.setRootPath( "sample" );
         //设置照片文件名
-        certificateView.setMediaName( "6663" );
+        certificateView.setMediaName( "6666" );
         //水印
         certificateView.setWaterText( "天天向上，好好学习" );
        // 水印大小
