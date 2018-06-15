@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.ding.voicecyber.certificateview.CertificateView;
+import com.ding.voicecyber.certificateview.ImageCommon;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 certificateView.setReturnImage();
                 String front = certificateView.getImage_front_name();
                 String back = certificateView.getImage_back_name();
-                Uri frontUri = CertificateView.getImageContentUri( MainActivity.this,front );
+                Uri frontUri = ImageCommon.getImageContentUri( MainActivity.this,front );
             }
         }
     }

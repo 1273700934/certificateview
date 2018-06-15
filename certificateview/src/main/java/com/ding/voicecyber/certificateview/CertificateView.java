@@ -1,22 +1,16 @@
 package com.ding.voicecyber.certificateview;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -27,8 +21,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-import com.ding.voicecyber.certificateview.ShowPhoto.DragPhotoActivity;
 
 import java.io.File;
 
@@ -144,14 +136,14 @@ public class CertificateView extends LinearLayout {
         {
             if(isMediaExists( image_front_name )){
                 certificate_front.setText( image_front_name );
-                setImage(mContext,certificate_front_image,getImageContentUri( mContext,getMediaFullName(image_front_name) ));
+                setImage(mContext,certificate_front_image,ImageCommon.getImageContentUri( mContext,getMediaFullName(image_front_name) ));
             }
         }
         if(!TextUtils.isEmpty( image_back_name ))
         {
             if(isMediaExists( image_back_name )){
                 certificate_back.setText( image_back_name );
-                setImage(mContext,certificate_back_image,getImageContentUri( mContext,getMediaFullName(image_back_name) ));
+                setImage(mContext,certificate_back_image,ImageCommon.getImageContentUri( mContext,getMediaFullName(image_back_name) ));
             }
         }
     }
@@ -191,7 +183,7 @@ public class CertificateView extends LinearLayout {
             @Override
             public void onClick(View view) {
                 if(isMediaExists( image_front_name) ){
-                    blowImage( image_front_name,view );
+                    ImageCommon.startPathDragPhotoActivity( mContext,getMediaFullName( image_front_name ),view );
                 }
             }
         } );
@@ -199,26 +191,12 @@ public class CertificateView extends LinearLayout {
             @Override
             public void onClick(View view) {
                 if(isMediaExists( image_back_name) ) {
-                    blowImage( image_back_name, view );
+                    ImageCommon.startUriDragPhotoActivity( mContext,ImageCommon.getImageContentUri( mContext,getMediaFullName( image_back_name ) ).toString(), view );
                 }
             }
         } );
     }
 
-    private void blowImage(String imageName, View view){
-        //Intent intent = new Intent(mContext, DragPhotoActivity.class);
-        Intent intent = new Intent();
-        intent.setAction("android.intent.action.patientIf");
-        int location[] = new int[2];
-        view.getLocationOnScreen(location);
-        intent.putExtra("left", location[0]);
-        intent.putExtra("top", location[1]);
-        intent.putExtra("height", view.getHeight());
-        intent.putExtra("width", view.getWidth());
-        intent.putExtra( "image",imageName);
-        mContext.startActivity(intent);
-        mContext.overridePendingTransition(0,0);
-    }
     /** 拍照
      * @param context
      * @param fileName 文件名
@@ -228,7 +206,7 @@ public class CertificateView extends LinearLayout {
         intent.putExtra( MediaStore.EXTRA_VIDEO_QUALITY, 0);
         String imagePath = getMediaFullName( fileName );
         Log.i( "photo" ,imagePath);
-        Uri imageUri = getImageContentUri(context,  imagePath );
+        Uri imageUri = ImageCommon.getImageContentUri(context,  imagePath );
         intent.putExtra( MediaStore.EXTRA_OUTPUT, imageUri);// 更改系统默认存储路径
         context.startActivityForResult(intent,REQUEST_CAMERA+Media);
         return imageUri;
@@ -240,49 +218,31 @@ public class CertificateView extends LinearLayout {
 
     //设置返回图片到界面
     public void setReturnImage(){
-        if(CertificateView.isMediaExists( image_front_name_tmp )){
+        if(isMediaExists( image_front_name_tmp )){
             imageFileCommon(image_front_name_tmp,image_front_name);
         }
-        if(CertificateView.isMediaExists( image_back_name_tmp )){
+        if(isMediaExists( image_back_name_tmp )){
             imageFileCommon(image_back_name_tmp,image_back_name);
         }
         setMedia();
     }
 
     private void imageFileCommon(String imageTmp,String ImageTarget){
-        String tmpPath = CertificateView.getMediaFullName(imageTmp);
-        String imagePath = CertificateView.getMediaFullName(ImageTarget);
+        String tmpPath = getMediaFullName(imageTmp);
+        String imagePath = getMediaFullName(ImageTarget);
         try{
             ContentResolver cr = mContext.getContentResolver();
             File out = new File (imagePath);
-            Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(CertificateView.getImageContentUri( mContext ,tmpPath)));
+            Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(ImageCommon.getImageContentUri( mContext ,tmpPath)));
             bitmap = ImageCommon.createWatermark( bitmap,WaterText,WaterColor,WaterSize );
             ImageCommon.compressBitmapToFile(bitmap,out,WaterRatio);
-            CertificateView.isMediaDelete( imageTmp );
+            isMediaDelete( imageTmp );
         }catch (Exception ex){
 
         }
     }
 
-    /**
-     * @param context
-     * @param imagePath
-     * @return 本地图片URI
-     */
-    public static Uri getImageContentUri(Context context, String imagePath) {
-        Cursor cursor = context.getContentResolver().query( MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[] { MediaStore.Images.Media._ID }, MediaStore.Images.Media.DATA + "=? ",
-                new String[] { imagePath }, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            int id = cursor.getInt(cursor.getColumnIndex( MediaStore.MediaColumns._ID));
-            Uri baseUri = Uri.parse("content://media/external/images/media");
-            return Uri.withAppendedPath(baseUri, "" + id);
-        } else {
-                ContentValues values = new ContentValues();
-                values.put( MediaStore.Images.Media.DATA, imagePath);
-                return context.getContentResolver().insert( MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-            }
-    }
+
 
 
 

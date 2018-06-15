@@ -12,12 +12,14 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
-import com.ding.voicecyber.certificateview.CertificateView;
+import com.ding.voicecyber.certificateview.ImageCommon;
 import com.ding.voicecyber.certificateview.PhotoView.DragPhotoView;
 import com.ding.voicecyber.certificateview.R;
 
@@ -40,7 +42,9 @@ public class DragPhotoActivity extends AppCompatActivity {
     private float mScaleY;
     private float mTranslationX;
     private float mTranslationY;
-    private String mImageName;
+    private String mImagePath;
+    private static final String LAG = "DragPhotoActivity";
+    Uri imageUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +63,20 @@ public class DragPhotoActivity extends AppCompatActivity {
         mList.add("path");
 
         mPhotoViews = (DragPhotoView) View.inflate(this, R.layout.item_viewpager, null);
-        mImageName = getIntent().getStringExtra("image");
-        Uri uri = CertificateView.getImageContentUri( DragPhotoActivity.this,CertificateView.getMediaFullName(mImageName));
+        try{
+            mImagePath = getIntent().getStringExtra("imagePath");
+        }catch (Exception e){
+            Log.e( LAG,e.getMessage() );
+        }
+        if(TextUtils.isEmpty( mImagePath )){
+            String uri = getIntent().getStringExtra("imageUri");
+            imageUri =  Uri.parse( uri );
+        }else {
+            imageUri = ImageCommon.getImageContentUri( DragPhotoActivity.this, mImagePath );
+        }
         ContentResolver crr = getContentResolver();
         try {
-            Bitmap bitmap_f = BitmapFactory.decodeStream(crr.openInputStream(uri));
+            Bitmap bitmap_f = BitmapFactory.decodeStream(crr.openInputStream(imageUri));
             mPhotoViews.setImageBitmap( bitmap_f );
         } catch (Exception e) {
             e.printStackTrace();
