@@ -100,3 +100,10 @@
 ![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/2.gif)
 
 
+感谢：
+
+
+		https://github.com/githubwing/DragPhotoView.git
+		https://github.com/chrisbanes/PhotoView
+等开源项目。
+
