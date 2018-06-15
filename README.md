@@ -1,6 +1,7 @@
 # certificateview
 提供一个证件照的控件，可以设置照片水印，水印颜色，大小，照片压缩比等等
-使用说明：
+
+#使用说明：
 
 将其添加到存储库末尾的根build.gradle中：
 
@@ -19,7 +20,7 @@
 		
   
   
-  权限要求：
+# 权限要求：
   	
 	
 	AndroidManifest.xml添加：
@@ -41,7 +42,7 @@
     };
   
   
-  在页面中：
+# 在页面中：
   
  
  	在xml页面根节点加上
@@ -56,7 +57,7 @@
     </com.ding.voicecyber.certificateview.CertificateView>
     其中 media_type 是要与业务逻辑关联的 表示自定义证件类型
         
- 后台属性设置：
+# 后台属性设置：
  
  
      	CertificateView certificateView;
@@ -74,8 +75,8 @@
         certificateView.setWaterRatio( 8 );
 	
 	
-事物处理：
-在Activity中添加：
+# 事物处理：
+	在Activity中添加：
  		
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -91,16 +92,26 @@
         }
     }
 	
+
+# 微信朋友圈图片浏览方式调用
+
+		import com.ding.voicecyber.certificateview.ImageCommon;
+			
+		//imagepath 图片绝对路径 view当前ImageView视图
+		startPathDragPhotoActivity(Activity context, String imagepath, View view)
+		
+		//imagepath 图片Uri view当前ImageView视图
+		startUriDragPhotoActivity(Activity context, String imageUri, View view)
 	
 	
 	
-效果：![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/1.gif)
+# 效果：![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/1.gif)
 
 
 ![image](https://github.com/1273700934/certificateview/blob/master/%E5%9B%BE%E5%83%8F/2.gif)
 
 
-感谢：
+# 感谢：
 
 
 		https://github.com/githubwing/DragPhotoView.git
